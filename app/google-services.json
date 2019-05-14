@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "971602469667",
+    "firebase_url": "https://vidyaacademy-c5e8d.firebaseio.com",
+    "project_id": "vidyaacademy-c5e8d",
+    "storage_bucket": "vidyaacademy-c5e8d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971602469667:android:08a6d02aad93cf1c",
+        "android_client_info": {
+          "package_name": "com.vidhya.vidyaacademy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971602469667-ssom69jcv2g7ko9slitg0pri8fs16po5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vidhya.vidyaacademy",
+            "certificate_hash": "69a8dad74632bd309eca728a650e565fa70a9382"
+          }
+        },
+        {
+          "client_id": "971602469667-4vnfv11ib146ldsbfv8se6ko910bft2j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyz6sAkg2Z1oitCjs1bN5APDUnjDwejGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971602469667-4vnfv11ib146ldsbfv8se6ko910bft2j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

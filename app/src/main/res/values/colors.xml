@@ -19,4 +19,20 @@
     <color name="colorbottom2">#66ffcc</color>
     <color name="colorforacrionba">#404040</color>
     <color name="colorforbg">#e6e6e6</color>
+
+
+
+
+    <style name="RegistrationEditTextStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:tint">@color/gray</item>
+    </style>
+
+    <color name="white">#ffffff</color>
+    <color name="gray">#c4c4c4</color>
+    <color name="dark_gray">#3f3f3f</color>
+    <color name="dark_gray_status">#2a2a2a</color>
 </resources>

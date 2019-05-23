@@ -1,6 +1,8 @@
 package com.vidhya.vidyaacademy;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,6 +16,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+
 
 public class Admin extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -39,22 +42,32 @@ public class Admin extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        /*DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-        }
+        }*/
+
+        moveTaskToBack(true);
+
+        finish();
+
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.admin, menu);
+
         return true;
     }
 
@@ -83,17 +96,32 @@ public class Admin extends AppCompatActivity
 
         if (id == R.id.nav_profile) {
             // Handle the camera action
+            Intent i=new Intent(getApplicationContext(), Admin_Profile.class);
+            startActivity(i);
         } else if (id == R.id.nav_studentDetails) {
 
         } else if (id == R.id.nav_marks) {
-            Intent i=new Intent(getApplicationContext(),Marks.class);
-            startActivity(i);
+           /* Intent i=new Intent(getApplicationContext(),Marks.class);
+            startActivity(i);*/
 
         } else if (id == R.id.nav_view) {
-            Intent i=new Intent(getApplicationContext(),ItemListActivity.class);
+            Intent i=new Intent(getApplicationContext(),ClassList_list.class);
             startActivity(i);
 
         } else if (id == R.id.nav_logout) {
+            SharedPreferences preferences = getApplicationContext().getSharedPreferences("MyShared", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.clear();
+            editor.commit();
+            Intent intent = new Intent(Admin.this, Login.class);
+            intent.putExtra("finish", true);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                    Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+
+            finish();
+
 
         } /*else if (id == R.id.nav_send) {
 

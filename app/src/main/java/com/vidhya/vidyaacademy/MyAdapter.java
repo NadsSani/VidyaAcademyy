@@ -31,7 +31,9 @@ public class MyAdapter extends ArrayAdapter {
         v=inflater.inflate(R.layout.activity_layout_for_listview,null);
         TextView tv_classlist_class=(TextView)v.findViewById(R.id.tv_classlist_class);
         tv_classlist_class.setText(arrayList.get(position).toString());
-/*
+
+
+        /*
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

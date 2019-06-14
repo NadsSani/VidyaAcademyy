@@ -95,6 +95,7 @@ public class Login extends AppCompatActivity {
                                 case "admin":
                                     Toast.makeText(getApplicationContext(), "admin", Toast.LENGTH_LONG).show();
                                     sharedToSave(dataSnapshot2);
+
                                     editor.putString("key","admin");
                                     editor.commit();
 
@@ -104,9 +105,9 @@ public class Login extends AppCompatActivity {
 
                                     break;
                                 case "parent":
-                                    Toast.makeText(getApplicationContext(), "parent", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "activity_parent", Toast.LENGTH_LONG).show();
                                     sharedToSave(dataSnapshot2);
-                                    editor.putString("key","parent");
+                                    editor.putString("key","activity_parent");
                                     editor.commit();
                                     Intent intent1 = new Intent(Login.this, Parent.class);
                                     startActivity(intent1);
@@ -114,13 +115,15 @@ public class Login extends AppCompatActivity {
 
                                     break;
                                 case "principal":
-                                    Toast.makeText(getApplicationContext(), "principal", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "Principal", Toast.LENGTH_LONG).show();
                                     sharedToSave(dataSnapshot2);
+
                                     editor.putString("key","principal");
                                     editor.commit();
+
                                     Intent intent2 = new Intent(Login.this, Principal.class);
                                     startActivity(intent2);
-                                    Toast.makeText(getApplicationContext(), "principal", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "activity_principal", Toast.LENGTH_LONG).show();
 
                                     break;
                             }

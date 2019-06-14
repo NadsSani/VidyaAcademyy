@@ -1,0 +1,103 @@
+package com.vidhya.vidyaacademy;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+import pl.droidsonroids.gif.GifImageView;
+
+public class RecyclerViewForAdminInfo extends RecyclerView.Adapter<RecyclerViewForAdminInfo.ViewHolder> {
+
+
+    TextView tv_card_name_admin ;
+    CircleImageView iv_card_photo_admin;
+    ArrayList<Princi_Admin_CardDetails> list;
+    Context context;
+    ImageButton ib_edit_AdminList,ib_delete_AdminList;
+
+
+
+    public RecyclerViewForAdminInfo(Context context, ArrayList<Princi_Admin_CardDetails> arrayList) {
+        this.list = arrayList;
+        this.context = context;
+
+
+
+    }
+
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        CardView view = (CardView) LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.princi_card_admin, viewGroup, false);
+        ib_edit_AdminList=view.findViewById( R.id.ib_edit_AdminList );
+
+
+        return new ViewHolder(view);
+    }
+
+
+
+    @Override
+
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
+        final int j;
+        final CardView cardView = viewHolder.cardView;
+
+
+        tv_card_name_admin= cardView.findViewById(R.id.tv_card_name_admin);
+        iv_card_photo_admin=cardView.findViewById( R.id.iv_card_photo_admin );
+        tv_card_name_admin.setText(list.get(i).getName().toString());
+
+        Glide.with( context ).load( list.get( i ).getImage().toString()).into(iv_card_photo_admin  );
+
+
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent intent = new Intent(context, ClasstList_Card_princi.class);
+                intent.putExtra("AdminID",list.get(i).getUserid());
+                Log.e("AdminID",list.get(i).getUserid());
+                context.startActivity(intent);
+
+            }
+        });
+
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        CardView cardView;
+
+        public ViewHolder(View view) {
+            super(view);
+
+            cardView = (CardView) view.findViewById(R.id.cardview_forAdmin);
+
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        int len = list.size();
+        return len;
+    }
+
+}

@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -64,15 +63,15 @@ public class SplashScreen extends AppCompatActivity {
 
                             break;
 
-                        case "parent":
+                        case "activity_parent":
                             Intent i2=new Intent(getApplicationContext(),Parent.class);
                             startActivity(i2);
 
 
                             break;
 
-                        case "principal":
-                            Intent i3=new Intent(getApplicationContext(),Principal.class);
+                        case "activity_main_principal":
+                            Intent i3=new Intent(getApplicationContext(), Principal.class);
                             startActivity(i3);
 
 
@@ -161,7 +160,7 @@ public class SplashScreen extends AppCompatActivity {
 
                                     break;
                                 case "parent":
-                                    Toast.makeText(getApplicationContext(), "parent", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "activity_parent", Toast.LENGTH_LONG).show();
                                     sharedToSave(dataSnapshot2);
                                     Intent intent1 = new Intent(getApplicationContext(), Parent.class);
                                     startActivity(intent1);
@@ -169,11 +168,11 @@ public class SplashScreen extends AppCompatActivity {
 
                                     break;
                                 case "principal":
-                                    Toast.makeText(getApplicationContext(), "principal", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "Principal", Toast.LENGTH_LONG).show();
                                     sharedToSave(dataSnapshot2);
                                     Intent intent2 = new Intent(getApplicationContext(), Principal.class);
                                     startActivity(intent2);
-                                    Toast.makeText(getApplicationContext(), "principall", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "principal", Toast.LENGTH_LONG).show();
 
                                     break;
                             }

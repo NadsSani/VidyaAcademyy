@@ -10,7 +10,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#ffffff">
+    android:background="@drawable/bg_login">
 
     <ImageView
         android:id="@+id/img_login_logo"
@@ -18,9 +18,10 @@
         android:layout_height="@dimen/image_header_dimen"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/image_header_top_margin"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/vidhya_logo" />
 
     <RelativeLayout
+        android:layout_marginTop="15dp"
         android:id="@+id/login_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,7 +36,7 @@
             android:paddingLeft="@dimen/login_layout_padding"
             android:paddingRight="@dimen/login_layout_padding"
             android:paddingTop="@dimen/login_layout_padding_top"
-            android:background="@drawable/bg1"
+            android:background="@drawable/bg_white"
             android:weightSum="1">
 
             <android.support.design.widget.TextInputLayout
@@ -83,8 +84,9 @@
                 android:layout_marginLeft="@dimen/login_button_margin"
                 android:layout_marginRight="@dimen/login_button_margin"
                 android:layout_marginTop="@dimen/login_button_margin"
-                android:textColor="@color/dark_gray"
-                android:background="@drawable/btn1"
+                android:textColor="#fff"
+                android:background="@drawable/btnbg_red"
+                android:textStyle="bold"
                 android:text="@string/log_in"/>
 
             <TextView

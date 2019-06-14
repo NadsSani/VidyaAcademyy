@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VidyaAcademy</string>
+    <string name="app_name">Vidya</string>
     <string name="title_activity_admin">Admin</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -11,7 +11,7 @@
     <string name="menu_profile">Profile</string>
     <string name="menu_studentDetails">Student Details</string>
     <string name="menu_marks">Enter Marks</string>
-    <string name="menu_view">Student List </string>
+    <string name="menu_view">Class List </string>
     <string name="menu_logout">LogOut</string>
     <string name="menu_send">Send</string>
     <string name="title_item_list">Items</string>
@@ -20,11 +20,26 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-<!--
+    <!--
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
 -->
 
 
     <string name="log_in">LOG IN</string>
+
+
+    <string name="menu_profilep">Profile</string>
+    <string name="menu_addAdmin">Add Admin</string>
+    <string name="menu_approval">Approval</string>
+    <string name="menu_logoutp">Log Out</string>
+    <string name="menu_share">Share</string>
+
+    <string name="nav_header_titlep">Principal</string>
+    <string name="nav_header_subtitlep">princi.studio@android.com</string>
+    <string name="about_us">At the beginning of your company profile include important information such as your company name  your business s physical location a website URL contact information and an established date.Consider adding a timeline or synopsis of your companys history including information regarding expansion or growth.
+
+
+</string>
+
 
 </resources>

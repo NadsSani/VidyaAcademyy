@@ -19,8 +19,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ClasstList_Card_princi extends Activity {
-    ArrayList<Princi_Classlist_Adpter> arrayList1;
+public class Approved_Classlist extends Activity {
+    ArrayList<Approved_Classlist_Adpter> arrayList1;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     SharedPreferences sharedPreferences;
     DatabaseReference databaseReference;
@@ -29,21 +29,21 @@ public class ClasstList_Card_princi extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_recy_princi_cardclass );
+        setContentView( R.layout.activity_recy_approved_classlist );
         Intent i = getIntent();
-         AdminID = i.getStringExtra( "AdminID" );
+        AdminID = i.getStringExtra( "AdminID" );
         Log.e( "Admin", AdminID );
 
 
         arrayList1 = new ArrayList<>();
         databaseReference = FirebaseDatabase.getInstance().getReference( "users/admin/" + AdminID );
-        final RecyclerView recyclerforclasscard = (RecyclerView) findViewById( R.id.recyclerforclasscard );
+        final RecyclerView recyclerView = (RecyclerView) findViewById( R.id.recyclerforapprovedclasslist );
 
-        recyclerforclasscard.setHasFixedSize( true );
+        recyclerView.setHasFixedSize( true );
 
         LinearLayoutManager layoutManagern = new LinearLayoutManager( this );
 
-        recyclerforclasscard.setLayoutManager( layoutManagern );
+        recyclerView.setLayoutManager( layoutManagern );
 
         databaseReference.addValueEventListener( new ValueEventListener() {
             @Override
@@ -69,16 +69,16 @@ public class ClasstList_Card_princi extends Activity {
                         case "pending":
                             continue;
                         default:
-                            Princi_Classlist_Adpter princi_class_cardDetails = new Princi_Classlist_Adpter( dataSnapshot1.getChildren().toString(), dataSnapshot1.getKey().toString() );
-                            arrayList1.add( princi_class_cardDetails );
+                            Approved_Classlist_Adpter approvedClasslistAdpter = new Approved_Classlist_Adpter( dataSnapshot1.getChildren().toString(), dataSnapshot1.getKey().toString() );
+                            arrayList1.add( approvedClasslistAdpter );
 
 
                     }
 
 
                 }
-                RecyclerViewForClassInfo_princi playAdapternew = new RecyclerViewForClassInfo_princi( ClasstList_Card_princi.this, arrayList1,AdminID );
-                recyclerforclasscard.setAdapter( playAdapternew );
+                RecyclerViewFor_ApprovedClasslist recyclerViewForApprovedClasslist = new RecyclerViewFor_ApprovedClasslist( Approved_Classlist.this, arrayList1,AdminID );
+                recyclerView.setAdapter( recyclerViewForApprovedClasslist );
 
             }
 

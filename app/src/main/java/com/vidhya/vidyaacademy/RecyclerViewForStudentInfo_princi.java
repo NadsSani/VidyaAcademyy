@@ -16,17 +16,16 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import pl.droidsonroids.gif.GifImageView;
 
 public class RecyclerViewForStudentInfo_princi extends RecyclerView.Adapter<RecyclerViewForStudentInfo_princi.ViewHolder> {
     TextView Student_Name, RegNo, Email, Adddress;
     CircleImageView iv_student_photo;
-    ArrayList<Princi_Stud_CardDetails> list;
+    ArrayList<Princi_Studlist_Adapter> list;
     Context context;
     String AdminID;
     String ClassID;
 
-    public RecyclerViewForStudentInfo_princi(Context context, ArrayList<Princi_Stud_CardDetails> arrayList, String ClassID,String AdminID) {
+    public RecyclerViewForStudentInfo_princi(Context context, ArrayList<Princi_Studlist_Adapter> arrayList, String ClassID, String AdminID) {
         this.list = arrayList;
         this.context = context;
         this.ClassID = ClassID;
@@ -66,7 +65,7 @@ public class RecyclerViewForStudentInfo_princi extends RecyclerView.Adapter<Recy
                 Log.e("nadeem",ClassID);
 
 
-                Intent intent = new Intent(context, StudentDetails_approval_princi.class);
+                Intent intent = new Intent(context, Princi_StudentDetails.class);
                 intent.putExtra( "ClassID",ClassID );
                 intent.putExtra( "AdminID",AdminID);
                 intent.putExtra( "RegNo",list.get( i ).getPhno() );

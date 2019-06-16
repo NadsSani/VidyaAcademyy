@@ -1,6 +1,8 @@
 package com.vidhya.vidyaacademy;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -92,6 +94,19 @@ public class Parent extends AppCompatActivity
             startActivity(i);
 
         } else if (id == R.id.nav_logoutPa) {
+
+            SharedPreferences preferences = getApplicationContext().getSharedPreferences( "MyShared", Context.MODE_PRIVATE );
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.clear();
+            editor.commit();
+            Intent intent = new Intent( Parent.this, Login.class );
+            intent.putExtra( "finish", true );
+            intent.setFlags( Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                    Intent.FLAG_ACTIVITY_NEW_TASK );
+            startActivity( intent );
+
+            finish();
 
         }
 

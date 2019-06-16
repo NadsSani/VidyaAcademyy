@@ -1,6 +1,6 @@
 package com.vidhya.vidyaacademy;
 
-public class Princi_Stud_CardDetails {
+public class Princi_Studlist_Adapter {
 
     private String name;
     private String address;
@@ -8,7 +8,7 @@ public class Princi_Stud_CardDetails {
     private String image;
     private String phno;
 
-    public Princi_Stud_CardDetails(String name, String address, String email, String image, String phno) {
+    public Princi_Studlist_Adapter(String name, String address, String email, String image, String phno) {
         this.name = name;
         this.address = address;
         this.email = email;

@@ -1,8 +1,7 @@
 package com.vidhya.vidyaacademy;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.location.Address;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,28 +21,31 @@ import com.google.firebase.database.ValueEventListener;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class StudentDetails_approval_princi extends AppCompatActivity {
+public class StudentDetails_Approve extends AppCompatActivity {
 
     TextView tv_stud_name_princi_approval, tv_stud_address_princi_approval, tv_stud_pname_princi_approval;
     Button btn_cancel_princi_studdetails, btn_approve_princi_studdetails;
-    CircleImageView tv_stud_photo_princi_approval;
-    String Name, Address, ParentName;
+    CircleImageView iv_stud_photo_approval;
+    String Name, Address, ParentName,Status,Image,AdminName;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
+
+    DatabaseReference databaseReference1;
     DatabaseReference databaseReference;
+    DatabaseReference databaseReference2;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_student_details_approval_princi );
-        tv_stud_name_princi_approval = findViewById( R.id.tv_stud_name_princi_approval );
-        tv_stud_address_princi_approval = findViewById( R.id.tv_stud_address_princi_approval );
-        tv_stud_pname_princi_approval = findViewById( R.id.tv_stud_pname_princi_approval );
+        setContentView( R.layout.activity_student_details_approval );
+        tv_stud_name_princi_approval = findViewById( R.id.tv_stud_name_approval );
+        tv_stud_address_princi_approval = findViewById( R.id.tv_stud_address_approval );
+        tv_stud_pname_princi_approval = findViewById( R.id.tv_stud_pname_approval );
         btn_cancel_princi_studdetails = findViewById( R.id.btn_cancel_princi_studdetails );
         btn_approve_princi_studdetails = findViewById( R.id.btn_approve_princi_studdetails );
-        tv_stud_photo_princi_approval = findViewById( R.id.tv_stud_photo_princi_approval );
+        iv_stud_photo_approval = findViewById( R.id.iv_stud_photo_approval );
 
         Intent i = getIntent();
         final String ClassID = i.getStringExtra( "ClassID" );
@@ -52,24 +54,47 @@ public class StudentDetails_approval_princi extends AppCompatActivity {
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference( "users/admin/" + AdminID + "/" + ClassID + "/" + RegNo );
+        databaseReference2=FirebaseDatabase.getInstance().getReference("users/admin/" + AdminID);
+
         databaseReference.addValueEventListener( new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
 
-                    //Log.e(  "Approval_Data",dataSnapshot.child( "name" ).getValue().toString());
+                    Log.e(  "Approval_Data",dataSnapshot.child( "image" ).getValue().toString());
 
                     Name = dataSnapshot.child( "name" ).getValue().toString();
                     Address = dataSnapshot.child( "address" ).getValue().toString();
                     ParentName = dataSnapshot.child( "parent_name" ).getValue().toString();
+                    Image=dataSnapshot.child( "image" ).getValue().toString();
 
                     tv_stud_name_princi_approval.setText( Name );
                     tv_stud_address_princi_approval.setText( Address );
                     tv_stud_pname_princi_approval.setText( ParentName );
 
-                    Glide.with( getApplicationContext() ).load( dataSnapshot.child( "image" ).getValue().toString() ).into( tv_stud_photo_princi_approval );
+                    Glide.with( getApplicationContext() ).load( dataSnapshot.child( "image" ).getValue().toString() ).into( iv_stud_photo_approval );
 
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        } );
+
+        databaseReference2.addValueEventListener( new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+
+                    Log.e(  "Approval_Data",dataSnapshot.child( "name" ).getValue().toString());
+
+                    AdminName = dataSnapshot.child( "name" ).getValue().toString();
+
+                }
+
             }
 
             @Override
@@ -87,16 +112,17 @@ public class StudentDetails_approval_princi extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                databaseReference = database.getReference( "users/parent/" );
+                databaseReference1 = database.getReference( "users/parent/" );
 
-                databaseReference.addListenerForSingleValueEvent( new ValueEventListener() {
+                databaseReference1.addListenerForSingleValueEvent( new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        ApprovedStudentDetails_adapter studentDetailsAdapter = new ApprovedStudentDetails_adapter( Name, Address, ParentName, RegNo, ClassID, AdminID );
 
-                        databaseReference.child( ParentName ).setValue( studentDetailsAdapter );
+                        ApproveStudentDetails_adapter approveStudentDetails_adapter = new ApproveStudentDetails_adapter( Name, Address, ParentName, RegNo, ClassID, AdminName,Status,Image );
+
+                        databaseReference1.child( ParentName ).setValue( approveStudentDetails_adapter );
                         Toast.makeText( getApplicationContext(), "Data Approved" , Toast.LENGTH_LONG ).show();
-
+                        databaseReference.child("status").setValue( "approved" );
 
                     }
 
@@ -117,7 +143,7 @@ public class StudentDetails_approval_princi extends AppCompatActivity {
 
                 databaseReference = database.getReference( "users/admin/"+AdminID+"/pending/");
 
-                ApprovedStudentDetails_adapter studentDetailsAdapter = new ApprovedStudentDetails_adapter( Name, Address, ParentName, RegNo, ClassID, AdminID );
+                PrinciStudentDetails_adapter studentDetailsAdapter = new PrinciStudentDetails_adapter( Name, Address, ParentName, RegNo, ClassID, AdminID );
 
                 databaseReference.child( ClassID ).child( RegNo ).setValue( studentDetailsAdapter );
                 Toast.makeText( getApplicationContext(), "Data Rejected " , Toast.LENGTH_LONG ).show();

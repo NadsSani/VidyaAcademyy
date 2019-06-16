@@ -1,12 +1,12 @@
 package com.vidhya.vidyaacademy;
 
 
-public class Princi_class_CardDetails {
+public class Approved_Classlist_Adpter {
 
     private String Class_Name;
     private String s;
 
-    public Princi_class_CardDetails(String class_Name,String s) {
+    public Approved_Classlist_Adpter(String class_Name, String s) {
        this.Class_Name = class_Name;
        this.s = s;
     }

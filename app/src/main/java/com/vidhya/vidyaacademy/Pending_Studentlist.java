@@ -19,9 +19,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class StudentList_Princi extends AppCompatActivity {
+public class Pending_Studentlist extends AppCompatActivity {
 
-    ArrayList<Princi_Studlist_Adapter> arrayList;
+    ArrayList<Pending_Studlist_Adapter> arrayList;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     SharedPreferences sharedPreferences;
@@ -30,7 +30,7 @@ public class StudentList_Princi extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recy_princi_cardstud);
+        setContentView(R.layout.activity_recy_pending_studentlist );
 
 
         Intent i = getIntent();
@@ -38,7 +38,7 @@ public class StudentList_Princi extends AppCompatActivity {
         final String AdminID=i.getStringExtra( "AdminID" );
 
 
-        final RecyclerView princi_recyclerforstudcard = (RecyclerView) findViewById(R.id.princi_recyclerforstudcard);
+        final RecyclerView princi_recyclerforstudcard = (RecyclerView) findViewById(R.id.pending_studentlist_recy);
 
         princi_recyclerforstudcard.setHasFixedSize(true);
 
@@ -64,15 +64,20 @@ public class StudentList_Princi extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Log.e("classlist", dataSnapshot1.getKey());
 
-
-                    Log.e("studentlist", dataSnapshot1.child( "name" ).toString());
+                    Log.e("status", dataSnapshot1.child( "status" ).getValue().toString());
                     /*SID=dataSnapshot1.getKey();
                     Log.e("SID",SID);*/
-                    Princi_Studlist_Adapter princi_stud_cardDetails = new Princi_Studlist_Adapter(dataSnapshot1.child("name").getValue().toString(), dataSnapshot1.child("address").getValue().toString(), dataSnapshot1.child("parent_name").getValue().toString(), dataSnapshot1.child("image").getValue().toString(),dataSnapshot1.getKey().toString());
-                    arrayList.add(princi_stud_cardDetails);
+                    if (dataSnapshot1.child( "status" ).getValue().toString().equals( "request" )||(dataSnapshot1.child( "status" ).getValue().toString().equals( "pending" ))) {
+                        Log.e( "pending" ,dataSnapshot1.getChildren().toString());
+                        Pending_Studlist_Adapter pending_studlist_adapter = new Pending_Studlist_Adapter( dataSnapshot1.child( "name" ).getValue().toString(), dataSnapshot1.child( "address" ).getValue().toString(), dataSnapshot1.child( "parent_name" ).getValue().toString(), dataSnapshot1.child( "image" ).getValue().toString(), dataSnapshot1.getKey().toString() );
+                        arrayList.add( pending_studlist_adapter );
+                    }
+                    else {
+                        continue;
+                    }
 
                 }
-                RecyclerViewForStudentInfo_princi playAdapter1 = new RecyclerViewForStudentInfo_princi(getApplicationContext(),arrayList,ClassID,AdminID);
+                RecyclerViewForPendingStudentList playAdapter1 = new RecyclerViewForPendingStudentList(Pending_Studentlist.this,arrayList,ClassID,AdminID);
                 princi_recyclerforstudcard.setAdapter(playAdapter1);
 
             }

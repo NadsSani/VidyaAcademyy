@@ -25,6 +25,7 @@ public class SplashScreen extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("users");
 
+
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     @Override
@@ -159,14 +160,15 @@ public class SplashScreen extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), "adminl", Toast.LENGTH_LONG).show();
 
                                     break;
-                                case "parent":
-                                    Toast.makeText(getApplicationContext(), "activity_parent", Toast.LENGTH_LONG).show();
+                              /* case "parent":
+                                   *//* Toast.makeText(getApplicationContext(), "activity_parent", Toast.LENGTH_LONG).show();
                                     sharedToSave(dataSnapshot2);
                                     Intent intent1 = new Intent(getApplicationContext(), Parent.class);
                                     startActivity(intent1);
                                     Toast.makeText(getApplicationContext(), "parentl", Toast.LENGTH_LONG).show();
 
-                                    break;
+                                    break;*//*
+                               continue;*/
                                 case "principal":
                                     Toast.makeText(getApplicationContext(), "Principal", Toast.LENGTH_LONG).show();
                                     sharedToSave(dataSnapshot2);
@@ -178,6 +180,34 @@ public class SplashScreen extends AppCompatActivity {
                             }
 
 
+                        }
+                        else if (user.equals( dataSnapshot2.getKey() ) && pass.equals( dataSnapshot2.child( "reg_No" ).getValue() )) {
+
+                            sharedPreferences = getApplicationContext().getSharedPreferences("MyShared", Context.MODE_PRIVATE);
+                            editor = sharedPreferences.edit();
+                            editor.putString(REMINDER,"yes");
+                            editor.commit();
+
+                            switch (dataSnapshot1.getKey().toString()) {
+
+
+                                case "admin":
+                                    continue;
+                                case "parent":
+                                    Toast.makeText( getApplicationContext(), "activity_parent", Toast.LENGTH_LONG ).show();
+                                    sharedToSave2( dataSnapshot2 );
+                                    editor.putString( "key", "activity_parent" );
+                                    editor.commit();
+                                    Intent intent1 = new Intent( SplashScreen.this, Parent.class );
+                                    startActivity( intent1 );
+                                    Toast.makeText( getApplicationContext(), "parentl", Toast.LENGTH_LONG ).show();
+
+                                    break;
+                                case "principal":
+                                    continue;
+
+
+                            }
                         }
 
                     }
@@ -194,6 +224,15 @@ public class SplashScreen extends AppCompatActivity {
         editor = sharedPreferences.edit();
         editor.putString("username", dataSnapshot2.getKey().toString());
         editor.putString("password", dataSnapshot2.child("password").getValue().toString());
+        editor.commit();
+
+
+    }
+    public void sharedToSave2(DataSnapshot dataSnapshot2) {
+        sharedPreferences = getApplicationContext().getSharedPreferences( "MyShared", Context.MODE_PRIVATE );
+        editor = sharedPreferences.edit();
+        editor.putString( "username", dataSnapshot2.getKey().toString() );
+        editor.putString( "password", dataSnapshot2.child( "reg_No" ).getValue().toString() );
         editor.commit();
 
 

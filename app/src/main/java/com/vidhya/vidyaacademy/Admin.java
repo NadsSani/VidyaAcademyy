@@ -193,9 +193,16 @@ public class Admin extends AppCompatActivity
             finish();
 
 
-        } /*else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_pending_list) {
 
-        }*/
+            Intent i = new Intent( getApplicationContext(), Pending_Request.class );
+            startActivity( i );
+
+        }else if (id == R.id.nav_approved_list) {
+            Intent i = new Intent( getApplicationContext(), Approved.class );
+            startActivity( i );
+
+        }
 
         DrawerLayout drawer = findViewById( R.id.drawer_layout );
         drawer.closeDrawer( GravityCompat.START );

@@ -1,10 +1,10 @@
 package com.vidhya.vidyaacademy;
 
-public class ApprovedStudentDetails_adapter {
+public class PrinciStudentDetails_adapter {
 
     private String Name, Address, Parent_Name, Tutor , Reg_No, S_Class;
 
-    public ApprovedStudentDetails_adapter(String name, String address, String parent_Name, String reg_No, String s_Class, String tutor) {
+    public PrinciStudentDetails_adapter(String name, String address, String parent_Name, String reg_No, String s_Class, String tutor) {
         Name = name;
         Address = address;
         Parent_Name = parent_Name;

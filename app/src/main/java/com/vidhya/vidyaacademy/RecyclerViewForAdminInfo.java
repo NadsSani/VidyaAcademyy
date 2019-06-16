@@ -9,9 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
@@ -19,20 +17,19 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import pl.droidsonroids.gif.GifImageView;
 
 public class RecyclerViewForAdminInfo extends RecyclerView.Adapter<RecyclerViewForAdminInfo.ViewHolder> {
 
 
     TextView tv_card_name_admin ;
     CircleImageView iv_card_photo_admin;
-    ArrayList<Princi_Admin_CardDetails> list;
+    ArrayList<Princi_Adminlist_Adapter> list;
     Context context;
     ImageButton ib_edit_AdminList,ib_delete_AdminList;
 
 
 
-    public RecyclerViewForAdminInfo(Context context, ArrayList<Princi_Admin_CardDetails> arrayList) {
+    public RecyclerViewForAdminInfo(Context context, ArrayList<Princi_Adminlist_Adapter> arrayList) {
         this.list = arrayList;
         this.context = context;
 
@@ -44,7 +41,7 @@ public class RecyclerViewForAdminInfo extends RecyclerView.Adapter<RecyclerViewF
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        CardView view = (CardView) LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.princi_card_admin, viewGroup, false);
+        CardView view = (CardView) LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_princi_card_admin, viewGroup, false);
         ib_edit_AdminList=view.findViewById( R.id.ib_edit_AdminList );
 
 

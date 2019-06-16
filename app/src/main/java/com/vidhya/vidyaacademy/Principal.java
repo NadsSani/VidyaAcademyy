@@ -169,11 +169,17 @@ public class Principal extends AppCompatActivity
             finish();
 
 
-        }/* else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_pending) {
 
-        } else if (id == R.id.nav_send) {
+            Intent i=new Intent(getApplicationContext(),Pending_Request.class);
+            startActivity(i);
 
-        }*/
+        } else if (id == R.id.nav_approved) {
+
+            Intent i=new Intent(getApplicationContext(),Approved.class);
+            startActivity(i);
+
+        }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

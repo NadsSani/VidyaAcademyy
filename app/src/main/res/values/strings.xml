@@ -30,7 +30,7 @@
 
     <string name="menu_profilep">Profile</string>
     <string name="menu_addAdmin">Add Admin</string>
-    <string name="menu_approval">Approval</string>
+    <string name="menu_approval">Record Details</string>
     <string name="menu_logoutp">Log Out</string>
     <string name="menu_share">Share</string>
 

@@ -1,7 +1,13 @@
 package com.vidhya.vidyaacademy;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,7 +24,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class RecyclerViewForAdminInfo extends RecyclerView.Adapter<RecyclerViewForAdminInfo.ViewHolder> {
+public class RecyclerViewForAdminInfo extends  RecyclerView.Adapter<RecyclerViewForAdminInfo.ViewHolder> {
 
 
     TextView tv_card_name_admin ;
@@ -70,10 +76,33 @@ public class RecyclerViewForAdminInfo extends RecyclerView.Adapter<RecyclerViewF
             public void onClick(View v) {
 
 
-                Intent intent = new Intent(context, ClasstList_Card_princi.class);
+              /*  Intent intent = new Intent(context, F_ClasstList_princi.class);
                 intent.putExtra("AdminID",list.get(i).getUserid());
                 Log.e("AdminID",list.get(i).getUserid());
-                context.startActivity(intent);
+                context.startActivity(intent);*/
+
+/*
+                Fragment fragment = new F_ClasstList_princi();
+                FragmentManager fragmentManager = getFragmentManager();;
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frame_princi, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();*/
+
+
+               /* F_ClasstList_princi fragment = new F_ClasstList_princi();
+                FragmentManager fragmentManager = context.;
+                fragmentManager.beginTransaction().replace(R.id.frame_princi, fragment).commit();
+
+
+*/
+/*
+
+                Activity activity=(Activity)context;
+                Fragment classtList_princi=new F_ClasstList_princi();
+                activity.getSupportFragmentManager().beginTransaction().replace( R.id.frame_princi,classtList_princi ).addToBackStack( null ).commit();
+*/
+
 
             }
         });

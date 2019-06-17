@@ -52,7 +52,7 @@
             android:name=".AddAdmin"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AdminList"
+            android:name=".Princi_AdminList"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ClasstList_Card_princi"

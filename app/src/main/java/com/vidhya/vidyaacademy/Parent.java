@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -26,14 +28,16 @@ public class Parent extends AppCompatActivity
         setContentView(R.layout.activity_parent_new);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
+        /*FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -41,6 +45,10 @@ public class Parent extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        Bundle bundle1=new Bundle();
+        addFragment(new F_Parent_Profile(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
     }
 
     @Override
@@ -84,14 +92,22 @@ public class Parent extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
         } else if (id == R.id.nav_about) {
-            Intent i=new Intent(getApplicationContext(),Parent_About.class);
-            startActivity(i);
+           /* Intent i=new Intent(getApplicationContext(),Parent_About.class);
+            startActivity(i);*/
+
+            Bundle bundle2=new Bundle();
+            addFragment(new F_Parent_About(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle2);
+
 
         }else if (id == R.id.nav_contact) {
 
         }  else if (id == R.id.nav_profilePa) {
-            Intent i=new Intent(getApplicationContext(),Parent_Profile.class);
-            startActivity(i);
+           /* Intent i=new Intent(getApplicationContext(),Parent_Profile.class);
+            startActivity(i);*/
+
+
+            Bundle bundle1=new Bundle();
+            addFragment(new F_Parent_Profile(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
 
         } else if (id == R.id.nav_logoutPa) {
 
@@ -113,5 +129,17 @@ public class Parent extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void addFragment(Fragment fragment, boolean addToBackStack,
+                            int transition, String name, Bundle bndle) {
+        FragmentTransaction ft = Parent.this
+                .getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frame_parent, fragment);
+        ft.setTransition(transition);
+        fragment.setArguments(bndle);
+        if (addToBackStack)
+            ft.addToBackStack(name);
+        ft.commit();
     }
 }

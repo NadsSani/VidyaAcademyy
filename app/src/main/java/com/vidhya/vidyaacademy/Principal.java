@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.TextView;
@@ -29,7 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Principal extends AppCompatActivity
+public class Principal extends FragmentActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     CircleImageView  iv_profile_princi;
@@ -48,14 +47,14 @@ public class Principal extends AppCompatActivity
         setContentView(R.layout.activity_main__principal);
         Toolbar toolbar = findViewById(R.id.toolbarP);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
+        /*FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -68,6 +67,9 @@ public class Principal extends AppCompatActivity
         tv_navhead_princiname=headerLayout.findViewById( R.id.tv_navhead_princiname );
         tv_navhead_princimail=headerLayout.findViewById( R.id.tv_navhead_princimail );
 
+
+        Bundle bundle1=new Bundle();
+        addFragment(new F_Principal_Profile(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
 
 
         sharedPreferences = getApplicationContext().getSharedPreferences( "MyShared", Context.MODE_PRIVATE );
@@ -98,6 +100,9 @@ public class Principal extends AppCompatActivity
 
         /*Intent i=new Intent(getApplicationContext(),ProfileScreenXMLUIDesign.class);
         startActivity(i);*/
+    }
+
+    private void setSupportActionBar(Toolbar toolbar) {
     }
 
     @Override
@@ -143,16 +148,27 @@ public class Principal extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-            Intent i=new Intent(getApplicationContext(), Principal_Profile.class);
-            startActivity(i);
+           /* Intent i=new Intent(getApplicationContext(), Principal_Profile.class);
+            startActivity(i);*/
+
+            Bundle bundle1=new Bundle();
+            addFragment(new F_Principal_Profile(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
+
             // Handle the camera action
         } else if (id == R.id.nav_addAdmin) {
-            Intent i=new Intent(getApplicationContext(),AddAdmin.class);
-            startActivity(i);
+           /* Intent i=new Intent(getApplicationContext(),AddAdmin.class);
+            startActivity(i);*/
+
+            Bundle bundle1=new Bundle();
+            addFragment(new F_AddAdmin(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
+
 
         } else if (id == R.id.nav_approval) {
-            Intent i=new Intent(getApplicationContext(),AdminList.class);
-            startActivity(i);
+            /*Intent i=new Intent(getApplicationContext(), Princi_AdminList.class);
+            startActivity(i);*/
+            Bundle bundle1=new Bundle();
+            addFragment(new F_Princi_AdminList(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
+
 
         } else if (id == R.id.nav_logoutP) {
             SharedPreferences preferences = getApplicationContext().getSharedPreferences("MyShared", Context.MODE_PRIVATE);
@@ -184,5 +200,18 @@ public class Principal extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    public void addFragment(Fragment fragment, boolean addToBackStack,
+                            int transition, String name, Bundle bndle) {
+        FragmentTransaction ft = Principal.this
+                .getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frame_princi, fragment);
+        ft.setTransition(transition);
+        fragment.setArguments(bndle);
+        if (addToBackStack)
+            ft.addToBackStack(name);
+        ft.commit();
     }
 }

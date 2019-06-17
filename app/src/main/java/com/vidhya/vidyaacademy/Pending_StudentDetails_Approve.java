@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class StudentDetails_Approve extends AppCompatActivity {
+public class Pending_StudentDetails_Approve extends AppCompatActivity {
 
     TextView tv_stud_name_princi_approval, tv_stud_address_princi_approval, tv_stud_pname_princi_approval;
     Button btn_cancel_princi_studdetails, btn_approve_princi_studdetails;

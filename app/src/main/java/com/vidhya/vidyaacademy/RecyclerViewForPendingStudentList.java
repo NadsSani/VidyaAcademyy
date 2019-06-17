@@ -65,7 +65,7 @@ public class RecyclerViewForPendingStudentList extends RecyclerView.Adapter<Recy
                 Log.e( "nadeem", ClassID );
 
 
-                Intent intent = new Intent( context, StudentDetails_Approve.class );
+                Intent intent = new Intent( context, Pending_StudentDetails_Approve.class );
                 intent.putExtra( "ClassID", ClassID );
                 intent.putExtra( "AdminID", AdminID );
                 intent.putExtra( "RegNo", list.get( i ).getPhno() );

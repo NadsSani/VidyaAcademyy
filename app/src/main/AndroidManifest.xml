@@ -79,7 +79,7 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".Pending_Studentlist"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".StudentDetails_Approve"
+        <activity android:name=".Pending_StudentDetails_Approve"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".Approved"
             android:theme="@style/AppTheme.NoActionBar"/>

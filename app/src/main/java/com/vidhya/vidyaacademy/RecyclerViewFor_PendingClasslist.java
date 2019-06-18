@@ -2,7 +2,12 @@ package com.vidhya.vidyaacademy;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -50,17 +55,29 @@ public class RecyclerViewFor_PendingClasslist extends RecyclerView.Adapter<Recyc
             @Override
             public void onClick(View v) {
 
-                Intent intent=new Intent( context,Pending_Studentlist.class );
+               /* Intent intent=new Intent( context,Pending_Studentlist.class );
                 intent.putExtra( "ClassID",list.get( i ).getS() );
                 intent.putExtra( "AdminID",AdminID );
                 Log.e( "ClassId" ,list.get( i ).getS().toString());
                 context.startActivity(intent);
+*/
+                Bundle bundle3=new Bundle();
+                bundle3.putString( "ClassID",list.get( i ).getS() );
+                bundle3.putString("AdminID",AdminID);
 
-/*
-                Intent intent = new Intent(context, ClasstList_Card_princi.class);
-                intent.putExtra("AdminID",list.get(i).getUserid());
-                Log.e("AdminID",list.get(i).getUserid());
-                context.startActivity(intent);*/
+                Log.e("ClassID",list.get( i ).getS());
+
+                Fragment fragment = new F_Pending_Studentlist();
+                //FragmentManager fragmentManager = getFragmentManager();;
+                fragment.setArguments( bundle3 );
+                FragmentManager fragmentManager =  ((FragmentActivity)context).getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frame_princi, fragment);
+                fragmentTransaction.addToBackStack(null);
+                // fragmentTransaction.commit();*/
+
+                fragmentTransaction.commit();
+
             }
         });
 

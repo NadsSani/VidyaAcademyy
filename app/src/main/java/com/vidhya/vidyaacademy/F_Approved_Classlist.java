@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -23,9 +22,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class F_ClasstList_princi extends Fragment {
+public class F_Approved_Classlist extends Fragment {
 
-    ArrayList<Princi_Classlist_Adpter> arrayList1;
+    ArrayList<Approved_Classlist_Adpter> arrayList1;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     SharedPreferences sharedPreferences;
     DatabaseReference databaseReference;
@@ -35,25 +34,23 @@ public class F_ClasstList_princi extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate( R.layout.fragment_recy_princi_cardclass,container,false );
 
-        /*Intent i = getActivity().getIntent();
+        View view = inflater.inflate(R.layout.fragment_recy_approved_classlist, container, false);
+
+        /*Intent i = getIntent();
         AdminID = i.getStringExtra( "AdminID" );
-        Log.e( "Admin", AdminID );*/
-
-        AdminID = getArguments().getString("AdminID");
-        Log.e("Bundle_value",AdminID);
+        Log.e( "Admin", AdminID );
 
 
         arrayList1 = new ArrayList<>();
         databaseReference = FirebaseDatabase.getInstance().getReference( "users/admin/" + AdminID );
-        final RecyclerView recyclerforclasscard = (RecyclerView) view.findViewById( R.id.recyclerforclasscard );
+        final RecyclerView recyclerView = (RecyclerView) view.findViewById( R.id.recyclerforapprovedclasslist );
 
-        recyclerforclasscard.setHasFixedSize( true );
+        recyclerView.setHasFixedSize( true );
 
-        LinearLayoutManager layoutManagern = new LinearLayoutManager( getContext() );
+        LinearLayoutManager layoutManagern = new LinearLayoutManager( getActivity());
 
-        recyclerforclasscard.setLayoutManager( layoutManagern );
+        recyclerView.setLayoutManager( layoutManagern );
 
         databaseReference.addValueEventListener( new ValueEventListener() {
             @Override
@@ -79,16 +76,16 @@ public class F_ClasstList_princi extends Fragment {
                         case "pending":
                             continue;
                         default:
-                            Princi_Classlist_Adpter princi_class_cardDetails = new Princi_Classlist_Adpter( dataSnapshot1.getChildren().toString(), dataSnapshot1.getKey().toString() );
-                            arrayList1.add( princi_class_cardDetails );
+                            Approved_Classlist_Adpter approvedClasslistAdpter = new Approved_Classlist_Adpter( dataSnapshot1.getChildren().toString(), dataSnapshot1.getKey().toString() );
+                            arrayList1.add( approvedClasslistAdpter );
 
 
                     }
 
 
                 }
-                RecyclerViewForClassInfo_princi playAdapternew = new RecyclerViewForClassInfo_princi( getActivity(), arrayList1,AdminID );
-                recyclerforclasscard.setAdapter( playAdapternew );
+                RecyclerViewFor_ApprovedClasslist recyclerViewForApprovedClasslist = new RecyclerViewFor_ApprovedClasslist( getActivity(), arrayList1,AdminID );
+                recyclerView.setAdapter( recyclerViewForApprovedClasslist );
 
             }
 
@@ -100,6 +97,9 @@ public class F_ClasstList_princi extends Fragment {
         } );
 
 
+
+*/
         return view;
+
     }
 }

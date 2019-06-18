@@ -23,37 +23,38 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+public class F_Pending_Studentlist extends Fragment {
 
-public class F_StudentList_Princi extends Fragment {
 
-    ArrayList<Princi_Studlist_Adapter> arrayList;
+    ArrayList<Pending_Studlist_Adapter> arrayList;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     SharedPreferences sharedPreferences;
     DatabaseReference databaseReference;
-    String AdminID,ClassID;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate( R.layout.fragment_recy_princi_cardstud,container,false );
 
+        View view = inflater.inflate(R.layout.fragment_recy_pending_studentlist, container, false);
 
 
         /*Intent i = getIntent();
         final String ClassID = i.getStringExtra("ClassID");
-        final String AdminID=i.getStringExtra( "AdminID" );*/
+        final String AdminID = i.getStringExtra("AdminID");*/
 
-        AdminID = getArguments().getString("AdminID");
-        ClassID = getArguments().getString("ClassID");
-        Log.e("Bundle_value",ClassID);
+        final String AdminID = getArguments().getString("AdminID");
+        final String ClassID = getArguments().getString("ClassID");
+
+        Log.e("Bundle_value",AdminID);
 
 
-        final RecyclerView princi_recyclerforstudcard = (RecyclerView) view.findViewById(R.id.princi_recyclerforstudcard);
+        final RecyclerView princi_recyclerforstudcard = (RecyclerView) view.findViewById(R.id.pending_studentlist_recy);
 
         princi_recyclerforstudcard.setHasFixedSize(true);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
 
         princi_recyclerforstudcard.setLayoutManager(layoutManager);
 
@@ -64,9 +65,9 @@ public class F_StudentList_Princi extends Fragment {
         String userid = sharedPreferences.getString("userid", "");
 
         arrayList = new ArrayList<>();
-        databaseReference = FirebaseDatabase.getInstance().getReference("users/admin/" + AdminID + "/" + ClassID  );
+        databaseReference = FirebaseDatabase.getInstance().getReference("users/admin/" + AdminID + "/" + ClassID);
 
-        Log.e("ClassID",ClassID);
+        Log.e("ClassID", ClassID);
 
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -75,14 +76,18 @@ public class F_StudentList_Princi extends Fragment {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Log.e("classlist", dataSnapshot1.getKey());
 
+                    Log.e("status", dataSnapshot1.child("status").getValue().toString());
 
-                    Log.e("studentlist", dataSnapshot1.child( "name" ).toString());
-
-                    Princi_Studlist_Adapter princi_stud_cardDetails = new Princi_Studlist_Adapter(dataSnapshot1.child("name").getValue().toString(), dataSnapshot1.child("address").getValue().toString(), dataSnapshot1.child("parent_name").getValue().toString(), dataSnapshot1.child("image").getValue().toString(),dataSnapshot1.getKey().toString());
-                    arrayList.add(princi_stud_cardDetails);
+                    if (dataSnapshot1.child("status").getValue().toString().equals("request") || (dataSnapshot1.child("status").getValue().toString().equals("pending"))) {
+                        Log.e("pending", dataSnapshot1.getChildren().toString());
+                        Pending_Studlist_Adapter pending_studlist_adapter = new Pending_Studlist_Adapter(dataSnapshot1.child("name").getValue().toString(), dataSnapshot1.child("address").getValue().toString(), dataSnapshot1.child("parent_name").getValue().toString(), dataSnapshot1.child("image").getValue().toString(), dataSnapshot1.getKey().toString());
+                        arrayList.add(pending_studlist_adapter);
+                    } else {
+                        continue;
+                    }
 
                 }
-                RecyclerViewForStudentInfo_princi playAdapter1 = new RecyclerViewForStudentInfo_princi(getActivity(),arrayList,ClassID,AdminID);
+                RecyclerViewForPendingStudentList playAdapter1 = new RecyclerViewForPendingStudentList(getActivity(), arrayList, ClassID, AdminID);
                 princi_recyclerforstudcard.setAdapter(playAdapter1);
 
             }
@@ -93,7 +98,6 @@ public class F_StudentList_Princi extends Fragment {
 
             }
         });
-
 
         return view;
     }

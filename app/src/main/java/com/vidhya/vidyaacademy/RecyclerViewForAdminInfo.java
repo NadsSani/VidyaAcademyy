@@ -3,8 +3,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +34,7 @@ public class RecyclerViewForAdminInfo extends  RecyclerView.Adapter<RecyclerView
     ArrayList<Princi_Adminlist_Adapter> list;
     Context context;
     ImageButton ib_edit_AdminList,ib_delete_AdminList;
+    F_ClasstList_princi classtList_princi;
 
 
 
@@ -81,27 +84,22 @@ public class RecyclerViewForAdminInfo extends  RecyclerView.Adapter<RecyclerView
                 Log.e("AdminID",list.get(i).getUserid());
                 context.startActivity(intent);*/
 
-/*
+
+                Bundle bundle3=new Bundle();
+                bundle3.putString("AdminID",list.get( i ).getUserid());
+                //classtList_princi.setArguments(bundle3);
+                Log.e("AdminID",list.get( i ).getUserid());
+
                 Fragment fragment = new F_ClasstList_princi();
-                FragmentManager fragmentManager = getFragmentManager();;
+                //FragmentManager fragmentManager = getFragmentManager();;
+                fragment.setArguments( bundle3 );
+                FragmentManager fragmentManager =  ((FragmentActivity)context).getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frame_princi, fragment);
                 fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();*/
+               // fragmentTransaction.commit();*/
 
-
-               /* F_ClasstList_princi fragment = new F_ClasstList_princi();
-                FragmentManager fragmentManager = context.;
-                fragmentManager.beginTransaction().replace(R.id.frame_princi, fragment).commit();
-
-
-*/
-/*
-
-                Activity activity=(Activity)context;
-                Fragment classtList_princi=new F_ClasstList_princi();
-                activity.getSupportFragmentManager().beginTransaction().replace( R.id.frame_princi,classtList_princi ).addToBackStack( null ).commit();
-*/
+                fragmentTransaction.commit();
 
 
             }

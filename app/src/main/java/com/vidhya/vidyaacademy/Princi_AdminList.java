@@ -32,7 +32,7 @@ public class Princi_AdminList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recy_princi_cardadmin );
         Intent i = getIntent();
-        final String UID = i.getStringExtra("admin_list");
+        final String AdminID = i.getStringExtra("admin_list");
 
 
         arrayList = new ArrayList<>();

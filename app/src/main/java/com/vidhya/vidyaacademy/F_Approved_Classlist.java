@@ -39,7 +39,11 @@ public class F_Approved_Classlist extends Fragment {
 
         /*Intent i = getIntent();
         AdminID = i.getStringExtra( "AdminID" );
-        Log.e( "Admin", AdminID );
+        Log.e( "Admin", AdminID );*/
+
+        AdminID = getArguments().getString("AdminID");
+        Log.e("Bundle_value",AdminID);
+
 
 
         arrayList1 = new ArrayList<>();
@@ -98,7 +102,6 @@ public class F_Approved_Classlist extends Fragment {
 
 
 
-*/
         return view;
 
     }

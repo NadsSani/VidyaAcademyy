@@ -16,6 +16,9 @@ public class ApproveStudentDetails_adapter {
         Image=Image1;
     }
 
+    public ApproveStudentDetails_adapter(String name, String address, String parentName, String regNo, String classID, String adminID) {
+    }
+
     public String getName() {
         return Name;
     }

@@ -217,8 +217,11 @@ public class Admin extends FragmentActivity
 
 
         }else if (id == R.id.nav_approved_list) {
-            Intent i = new Intent( getApplicationContext(), Approved.class );
-            startActivity( i );
+            /*Intent i = new Intent( getApplicationContext(), Approved.class );
+            startActivity( i );*/
+            Bundle b1=new Bundle();
+            addFragment(new F_Approved(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",b1);
+
 
         }
 

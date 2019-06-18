@@ -1,5 +1,6 @@
 package com.vidhya.vidyaacademy;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -40,11 +41,15 @@ public class F_Approved_Studentlist extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_recy_approved_studentlist, container, false);
 
-/*
 
-        Intent i = getIntent();
+       /* Intent i = getIntent();
         final String ClassID = i.getStringExtra("ClassID");
-        final String AdminID=i.getStringExtra( "AdminID" );
+        final String AdminID=i.getStringExtra( "AdminID" );*/
+
+        final String AdminID = getArguments().getString("AdminID");
+        final String ClassID = getArguments().getString("ClassID");
+        Log.e("Bundle_value",ClassID);
+
 
 
         final RecyclerView princi_recyclerforstudcard = (RecyclerView) view.findViewById(R.id.approved_studentlist_recy);
@@ -57,10 +62,8 @@ public class F_Approved_Studentlist extends Fragment {
 
 
 
-*/
-/*
-        sharedPreferences = getApplicationContext().getSharedPreferences("MyShared", Context.MODE_PRIVATE);
-        String userid = sharedPreferences.getString("userid", "");*//*
+        sharedPreferences = getActivity().getSharedPreferences("MyShared", Context.MODE_PRIVATE);
+        String userid = sharedPreferences.getString("userid", "");
 
 
         arrayList = new ArrayList<>();
@@ -76,9 +79,7 @@ public class F_Approved_Studentlist extends Fragment {
                     Log.e("classlist", dataSnapshot1.getKey());
 
                     Log.e("status", dataSnapshot1.child( "status" ).getValue().toString());
-                    */
-/*SID=dataSnapshot1.getKey();
-                    Log.e("SID",SID);*//*
+
 
                     if (dataSnapshot1.child( "status" ).getValue().toString().equals( "approved" )) {
                         Log.e( "pending" ,dataSnapshot1.getChildren().toString());
@@ -104,7 +105,6 @@ public class F_Approved_Studentlist extends Fragment {
 
 
 
-*/
 
         return view;
     }

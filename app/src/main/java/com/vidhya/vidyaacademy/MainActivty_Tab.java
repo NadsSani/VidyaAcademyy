@@ -51,11 +51,11 @@ public class MainActivty_Tab extends AppCompatActivity  {
 
 
         Intent i = getIntent();
-        String nadeem = i.getStringExtra("Nadeem");
+        String nadeem = i.getStringExtra("UID");
         String Student_name=i.getStringExtra("Student Name");
         sharedPreferences = getApplicationContext().getSharedPreferences("MyShared", Context.MODE_PRIVATE);
         String userid = sharedPreferences.getString("userid", "");
-        Log.e("Nadeem....2",nadeem);
+        Log.e("UID",nadeem);
         Log.e("student_name",Student_name);
 
 

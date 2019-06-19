@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class F_Pending_Request extends Fragment {
+public class F_Admin_Pending extends Fragment {
 
 
     ArrayList<Peding_Request_Adapter> pedingRequestAdapterArrayList;

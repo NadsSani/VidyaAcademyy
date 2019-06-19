@@ -74,16 +74,16 @@ public class RecyclerViewForStudentInfo_admin extends RecyclerView.Adapter<Recyc
                 Log.e("nadeem",uids);
 
 
-                /*Intent intent = new Intent(context, MainActivty_Tab.class);
+                Intent intent = new Intent(context, MainActivty_Tab.class);
                 intent.putExtra("Student Name",list.get(i).getRegno());
-                intent.putExtra("Nadeem",uids);
-                context.startActivity(intent);*/
+                intent.putExtra("UID",uids);
+                context.startActivity(intent);
 
-                Bundle bundle3=new Bundle();
+               /* Bundle bundle3=new Bundle();
                 bundle3.putString("UID",uids);
                 bundle3.putString("Student Name",list.get(i).getRegno());
 
-
+*/
                // Fragment fragment = new F_StudentList_Admin();
                 //FragmentManager fragmentManager = getFragmentManager();;
                 //fragment.setArguments( bundle3 );

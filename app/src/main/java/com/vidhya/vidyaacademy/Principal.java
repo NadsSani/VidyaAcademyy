@@ -187,13 +187,13 @@ public class Principal extends FragmentActivity
 
         } else if (id == R.id.nav_pending) {
 
-            Intent i=new Intent(getApplicationContext(),Pending_Request.class);
-            startActivity(i);
+          /*  Intent i=new Intent(getApplicationContext(),Pending_Request.class);
+            startActivity(i);*/
 
         } else if (id == R.id.nav_approved) {
 
-            Intent i=new Intent(getApplicationContext(),Approved.class);
-            startActivity(i);
+           /* Intent i=new Intent(getApplicationContext(),Approved.class);
+            startActivity(i);*/
 
         }
 

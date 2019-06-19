@@ -1,14 +1,18 @@
 package com.vidhya.vidyaacademy;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,38 +23,48 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Pending_Studentlist extends AppCompatActivity {
+public class F_Admin_Approved_Studentlist extends Fragment {
 
-    ArrayList<Pending_Studlist_Adapter> arrayList;
+
+
+    ArrayList<Approved_Studlist_Adapter> arrayList;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     SharedPreferences sharedPreferences;
     DatabaseReference databaseReference;
 
+
+
+    @Nullable
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recy_pending_studentlist );
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_recy_approved_studentlist, container, false);
 
 
-        Intent i = getIntent();
+       /* Intent i = getIntent();
         final String ClassID = i.getStringExtra("ClassID");
-        final String AdminID=i.getStringExtra( "AdminID" );
+        final String AdminID=i.getStringExtra( "AdminID" );*/
+
+        final String AdminID = getArguments().getString("AdminID");
+        final String ClassID = getArguments().getString("ClassID");
+        Log.e("Bundle_value",ClassID);
 
 
-        final RecyclerView princi_recyclerforstudcard = (RecyclerView) findViewById(R.id.pending_studentlist_recy);
+
+        final RecyclerView princi_recyclerforstudcard = (RecyclerView) view.findViewById(R.id.approved_studentlist_recy);
 
         princi_recyclerforstudcard.setHasFixedSize(true);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
 
         princi_recyclerforstudcard.setLayoutManager(layoutManager);
 
 
 
-/*
-        sharedPreferences = getApplicationContext().getSharedPreferences("MyShared", Context.MODE_PRIVATE);
-        String userid = sharedPreferences.getString("userid", "");*/
+        sharedPreferences = getActivity().getSharedPreferences("MyShared", Context.MODE_PRIVATE);
+        String userid = sharedPreferences.getString("userid", "");
+
 
         arrayList = new ArrayList<>();
         databaseReference = FirebaseDatabase.getInstance().getReference("users/admin/" + AdminID + "/" + ClassID  );
@@ -65,30 +79,33 @@ public class Pending_Studentlist extends AppCompatActivity {
                     Log.e("classlist", dataSnapshot1.getKey());
 
                     Log.e("status", dataSnapshot1.child( "status" ).getValue().toString());
-                    /*SID=dataSnapshot1.getKey();
-                    Log.e("SID",SID);*/
-                    if (dataSnapshot1.child( "status" ).getValue().toString().equals( "request" )||(dataSnapshot1.child( "status" ).getValue().toString().equals( "pending" ))) {
+
+
+                    if (dataSnapshot1.child( "status" ).getValue().toString().equals( "approved" )) {
                         Log.e( "pending" ,dataSnapshot1.getChildren().toString());
-                        Pending_Studlist_Adapter pending_studlist_adapter = new Pending_Studlist_Adapter( dataSnapshot1.child( "name" ).getValue().toString(), dataSnapshot1.child( "address" ).getValue().toString(), dataSnapshot1.child( "parent_name" ).getValue().toString(), dataSnapshot1.child( "image" ).getValue().toString(), dataSnapshot1.getKey().toString() );
-                        arrayList.add( pending_studlist_adapter );
+                        Approved_Studlist_Adapter approvedStudlistAdapter = new Approved_Studlist_Adapter( dataSnapshot1.child( "name" ).getValue().toString(), dataSnapshot1.child( "address" ).getValue().toString(), dataSnapshot1.child( "parent_name" ).getValue().toString(), dataSnapshot1.child( "image" ).getValue().toString(), dataSnapshot1.getKey().toString() );
+                        arrayList.add( approvedStudlistAdapter );
                     }
                     else {
                         continue;
                     }
 
                 }
-                RecyclerViewForPendingStudentList playAdapter1 = new RecyclerViewForPendingStudentList(Pending_Studentlist.this,arrayList,ClassID,AdminID);
+                RecyclerViewForApprovedStudentList playAdapter1 = new RecyclerViewForApprovedStudentList(getActivity(),arrayList,ClassID,AdminID);
                 princi_recyclerforstudcard.setAdapter(playAdapter1);
 
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getApplicationContext(), "there is some error found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "there is some error found", Toast.LENGTH_SHORT).show();
 
             }
         });
 
 
+
+
+        return view;
     }
 }

@@ -24,15 +24,6 @@
             android:name=".Login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ClassList_list_Admin"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".StudentList_Admin"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Admin_Profile"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".Enter_Student_Details"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -46,49 +37,8 @@
             android:name=".Principal"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Principal_Profile"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".AddAdmin"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Princi_AdminList"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ClasstList_Card_princi"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".Parent"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Parent_Profile"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".StudentList_Princi"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Princi_StudentDetails"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Pending_Request"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Parent_About"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Pending_Classlist"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Pending_Studentlist"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Pending_StudentDetails_Approve"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Approved"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Approved_Classlist"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Approved_Studentlist"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Approved_StudentDetails"
-            android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>
 

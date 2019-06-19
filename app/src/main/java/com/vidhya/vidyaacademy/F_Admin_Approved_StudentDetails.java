@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class F_Approved_StudentDetails extends Fragment {
+public class F_Admin_Approved_StudentDetails extends Fragment {
 
     TextView tv_stud_name_approved, tv_stud_address_approved, tv_stud_pname_approved;
     Button btn_cancel_princi_studdetails, btn_approve_princi_studdetails;
@@ -43,8 +43,8 @@ public class F_Approved_StudentDetails extends Fragment {
         tv_stud_name_approved = view.findViewById(R.id.tv_stud_name_approved);
         tv_stud_address_approved = view.findViewById(R.id.tv_stud_address_approved);
         tv_stud_pname_approved = view.findViewById(R.id.tv_stud_pname_approved);
-         btn_cancel_princi_studdetails = view.findViewById( R.id.btn_cancel_princi_studdetails );
-        btn_approve_princi_studdetails = view.findViewById( R.id.btn_approve_princi_studdetails );
+         //btn_cancel_princi_studdetails = view.findViewById( R.id.btn_cancel_princi_studdetails );
+        //btn_approve_princi_studdetails = view.findViewById( R.id.btn_approve_princi_studdetails );
         tv_stud_photo_approved = view.findViewById(R.id.tv_stud_photo_approved);
 /*
         Intent i = getIntent();
@@ -92,7 +92,7 @@ public class F_Approved_StudentDetails extends Fragment {
         Log.e("AdminID_Approval", AdminID);
         Log.e("RegNo_Approval", RegNo);
 
-        btn_approve_princi_studdetails.setOnClickListener( new View.OnClickListener() {
+       /* btn_approve_princi_studdetails.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -134,7 +134,7 @@ public class F_Approved_StudentDetails extends Fragment {
 
             }
         } );
-
+*/
         return view;
     }
 }

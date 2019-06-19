@@ -1,7 +1,6 @@
 package com.vidhya.vidyaacademy;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -76,12 +75,12 @@ public class RecyclerViewForPednding_Request extends RecyclerView.Adapter<Recycl
 
                 Log.e("AdminID",list.get( i ).getUserid());
 
-                Fragment fragment = new F_Pending_Classlist();
+                Fragment fragment = new F_Admin_Pending_Classlist();
                 //FragmentManager fragmentManager = getFragmentManager();;
                 fragment.setArguments( b3 );
                 FragmentManager fragmentManager =  ((FragmentActivity)context).getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frame_princi, fragment);
+                fragmentTransaction.replace(R.id.frame_admin, fragment);
                 fragmentTransaction.addToBackStack(null);
                 // fragmentTransaction.commit();*/
 

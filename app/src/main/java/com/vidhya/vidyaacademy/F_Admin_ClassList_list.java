@@ -27,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class F_ClassList_list_Admin extends Fragment {
+public class F_Admin_ClassList_list extends Fragment {
 
 
     DatabaseReference databaseReference;
@@ -121,7 +121,7 @@ public class F_ClassList_list_Admin extends Fragment {
                         i.putExtra("student_list",arrayList.get(position));
                         Log.e("position",arrayList.get(position));
                         startActivity(i);*/
-
+/*
                         Bundle bundle3=new Bundle();
                         bundle3.putString("student_list",arrayList.get(position));
 
@@ -134,9 +134,9 @@ public class F_ClassList_list_Admin extends Fragment {
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                         fragmentTransaction.replace(R.id.frame_princi, fragment);
                         fragmentTransaction.addToBackStack(null);
-                        // fragmentTransaction.commit();*/
+                        // fragmentTransaction.commit();
 
-                        fragmentTransaction.commit();
+                        fragmentTransaction.commit();*/
 
                     }
                 });

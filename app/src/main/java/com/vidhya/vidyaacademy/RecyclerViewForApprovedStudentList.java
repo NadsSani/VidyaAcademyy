@@ -1,7 +1,6 @@
 package com.vidhya.vidyaacademy;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -84,12 +83,12 @@ public class RecyclerViewForApprovedStudentList extends RecyclerView.Adapter<Rec
                 //classtList_princi.setArguments(bundle3);
                 Log.e("StudID",list.get( i ).getPhno());
 
-                Fragment fragment = new F_Approved_StudentDetails();
+                Fragment fragment = new F_Admin_Approved_StudentDetails();
                 //FragmentManager fragmentManager = getFragmentManager();;
                 fragment.setArguments( bundle3 );
                 FragmentManager fragmentManager =  ((FragmentActivity)context).getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frame_princi, fragment);
+                fragmentTransaction.replace(R.id.frame_admin, fragment);
                 fragmentTransaction.addToBackStack(null);
                 // fragmentTransaction.commit();*/
 

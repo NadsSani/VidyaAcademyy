@@ -1,7 +1,6 @@
 package com.vidhya.vidyaacademy;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -82,12 +81,12 @@ public class RecyclerViewForPendingStudentList extends RecyclerView.Adapter<Recy
                 bundle3.putString("RegNo",list.get( i ).getPhno() );
 
 
-                Fragment fragment = new F_Pending_StudentDetails_Approve();
+                Fragment fragment = new F_Admin_Pending_StudentDetails();
                 //FragmentManager fragmentManager = getFragmentManager();;
                 fragment.setArguments( bundle3 );
                 FragmentManager fragmentManager =  ((FragmentActivity)context).getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frame_princi, fragment);
+                fragmentTransaction.replace(R.id.frame_admin, fragment);
                 fragmentTransaction.addToBackStack(null);
                 // fragmentTransaction.commit();*/
 

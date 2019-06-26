@@ -30,9 +30,12 @@ WOWZPlayerConfig mStreamPlayerConfig;
     class StatusCallback implements WOWZStatusCallback {
         @Override
         public void onWZStatus(WOWZStatus wzStatus) {
+
+
         }
         @Override
         public void onWZError(WOWZStatus wzStatus) {
+
         }
     }
 

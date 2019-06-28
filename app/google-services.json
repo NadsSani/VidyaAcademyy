@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:971602469667:android:08a6d02aad93cf1c",
         "android_client_info": {
-          "package_name": "com.vidhya.vidyaacademy"
+          "package_name": "com.vidya.vidyaacademy"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "971602469667-ssom69jcv2g7ko9slitg0pri8fs16po5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.vidhya.vidyaacademy",
+            "package_name": "com.vidya.vidyaacademy",
             "certificate_hash": "69a8dad74632bd309eca728a650e565fa70a9382"
           }
         },

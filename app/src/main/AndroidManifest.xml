@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.vidhya.vidyaacademy">
+    package="com.vidya.vidyaacademy">
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -25,12 +25,7 @@
         android:roundIcon="@drawable/vidhya_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LiveStreaming">
-
-        </activity>
-        <activity
-            android:name=".SplashScreen"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name="com.vidya.vidyaacademy.LiveStreaming">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,23 +33,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Login"
+            android:name="com.vidya.vidyaacademy.SplashScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity
+            android:name="com.vidya.vidyaacademy.Login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Enter_Student_Details"
+            android:name="com.vidya.vidyaacademy.Enter_Student_Details"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Admin"
+            android:name="com.vidya.vidyaacademy.Admin"
             android:label="@string/title_activity_admin"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MainActivty_Tab"
+            android:name="com.vidya.vidyaacademy.MainActivty_Tab"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Principal"
+            android:name="com.vidya.vidyaacademy.Principal"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Parent"
+            android:name="com.vidya.vidyaacademy.Parent"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
